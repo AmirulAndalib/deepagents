@@ -2,6 +2,32 @@
 
 # Deep Agents Changelog
 
+## [0.7.14](https://github.com/AmirulAndalib/deepagents/compare/deepagents==0.7.13...deepagents==0.7.14) (2026-09-03)
+
+
+### Features
+
+* **sdk:** add rubric grader integration hooks ([#5874](https://github.com/AmirulAndalib/deepagents/issues/5874)) ([07c0340](https://github.com/AmirulAndalib/deepagents/commit/07c0340bc41e3717f1cd73705b71f1f6a87d753f))
+* **sdk:** add subagent conversation forking ([#5714](https://github.com/AmirulAndalib/deepagents/issues/5714)) ([6b4427f](https://github.com/AmirulAndalib/deepagents/commit/6b4427f07dc35a0b61cf8224db090ea6bee6f72f))
+* **sdk:** disable tracing inputs on middleware ([#5377](https://github.com/AmirulAndalib/deepagents/issues/5377)) ([0aade99](https://github.com/AmirulAndalib/deepagents/commit/0aade99211dc45cc85ce8b95fc375612f982b48a))
+* **sdk:** expose `execute` exit code in artifact ([#5300](https://github.com/AmirulAndalib/deepagents/issues/5300)) ([de8bfca](https://github.com/AmirulAndalib/deepagents/commit/de8bfca8255d673c1e7860e8c158ed119238197e))
+
+
+### Bug Fixes
+
+* **sdk:** add `files` state only for state backends ([#5643](https://github.com/AmirulAndalib/deepagents/issues/5643)) ([63c13f3](https://github.com/AmirulAndalib/deepagents/commit/63c13f3e6bc79a5304e542178ac410b517c64c31))
+* **sdk:** batch concurrent `ContextHubBackend` mutations ([#5471](https://github.com/AmirulAndalib/deepagents/issues/5471)) ([822f7c9](https://github.com/AmirulAndalib/deepagents/commit/822f7c9b02e6d99bdb46b5545bb2543783c01769))
+* **sdk:** clarify zero execute timeout semantics ([#5752](https://github.com/AmirulAndalib/deepagents/issues/5752)) ([4b49286](https://github.com/AmirulAndalib/deepagents/commit/4b4928613262ac23d419f0e8788f24412a8fdafb))
+* **sdk:** enforce full criterion coverage in `RubricMiddleware` ([#5234](https://github.com/AmirulAndalib/deepagents/issues/5234)) ([ddb69b6](https://github.com/AmirulAndalib/deepagents/commit/ddb69b609a02d7203cda7f3ea2796ca73e5b5795))
+* **sdk:** exclude tools from execution when setting `excluded_tools` in harness profiles ([#5809](https://github.com/AmirulAndalib/deepagents/issues/5809)) ([553d412](https://github.com/AmirulAndalib/deepagents/commit/553d412bb4f4b868fbf080ab561f76b4dd335f52))
+* **sdk:** identify file-capable provider classes ([#5326](https://github.com/AmirulAndalib/deepagents/issues/5326)) ([e5d5391](https://github.com/AmirulAndalib/deepagents/commit/e5d53917c01aadcebe4e7e4a1974322033ae6c87))
+* **sdk:** make `BackendProtocol.glob` recursive for bare patterns ([#5026](https://github.com/AmirulAndalib/deepagents/issues/5026)) ([32f35d5](https://github.com/AmirulAndalib/deepagents/commit/32f35d5e01f460549c10365eb569978909f5c969))
+* **sdk:** offload conversation history to distinct session ID when summarizing ([#5470](https://github.com/AmirulAndalib/deepagents/issues/5470)) ([fa55c52](https://github.com/AmirulAndalib/deepagents/commit/fa55c52fe774462b2775c0d77dcf811d6dfd0e35))
+* **sdk:** prevent local shell commands from stealing TUI input ([#5873](https://github.com/AmirulAndalib/deepagents/issues/5873)) ([c94a090](https://github.com/AmirulAndalib/deepagents/commit/c94a090c1b21918c9e4eced52ecb4e3bf7476f43))
+* **sdk:** rename `handoff` subagent mode to `isolated` ([#6030](https://github.com/AmirulAndalib/deepagents/issues/6030)) ([15454a8](https://github.com/AmirulAndalib/deepagents/commit/15454a85438146a59c804af3a525f96091c55fe8))
+* **sdk:** surface sandbox glob failures instead of reporting no matches ([#5566](https://github.com/AmirulAndalib/deepagents/issues/5566)) ([0286f62](https://github.com/AmirulAndalib/deepagents/commit/0286f628646d4196e5e89164b45803fb7b97a0cc))
+* **sdk:** tolerate missing `modified_at` in glob sort ([#4376](https://github.com/AmirulAndalib/deepagents/issues/4376)) ([09b2e53](https://github.com/AmirulAndalib/deepagents/commit/09b2e53617968a06c2b4ee6d821fca71a1d94d49))
+
 ## [0.7.13](https://github.com/langchain-ai/deepagents/compare/deepagents==0.7.12...deepagents==0.7.13) (2026-09-02)
 
 ### Bug Fixes
