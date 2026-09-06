@@ -29,6 +29,26 @@ If `AGENT_MODEL` is unset, Talon starts with the echo runtime. This is useful fo
 
 Assistant state lives under `~/.deepagents/<assistant_id>/` by default. The host creates restrictive state directories for the materialized agent manifest, channel sessions, and cron jobs, and persists conversation checkpoints in `checkpoints.sqlite` so chat history survives restarts. The default local execution workspace is the current working directory; set `DEEPAGENTS_TALON_WORKSPACE` to use a different directory. The per-invocation graph recursion limit defaults to `500`; set `DEEPAGENTS_TALON_RECURSION_LIMIT` to tune it.
 
+## Conversation history
+
+Talon archives channel conversations in `checkpoints.sqlite` without automatic
+expiry. The agent can list, search, and read past sessions in bounded pages,
+restricted to the current channel and chat. History survives context compaction;
+text, tool-call arguments, and distinct message revisions are retained.
+
+- `/new` starts a fresh context while keeping earlier sessions searchable.
+- `/reset-all-history` stops active work, deletes this chat's archived sessions and
+  checkpoints, and starts a fresh context. Other chats are unaffected. Cancellation
+  timeouts leave history intact; deletion failures may leave a partial reset that
+  you can retry.
+
+Reset does not remove cron jobs, memory files, downloaded media, traces, or backups.
+Attachment binaries and archive-tool results are not indexed. Scheduled runs do not
+add conversation history, and existing checkpoints are not backfilled.
+
+The echo runtime and unwrapped custom checkpointers do not support history tools or
+reset. Custom async LangGraph checkpointers can enable history with `ConversationSaver`.
+
 ## Interrupt and Continue
 
 A new message in a conversation cancels the active turn, records an interruption marker after the latest committed graph checkpoint, and starts the new message on the same thread. Partial output from the cancelled turn is not fabricated or delivered. `/stop` and `/new` also recover interrupted state; process shutdown does not. If cancellation does not finish within 30 seconds, Talon leaves the existing run isolated and does not start the new message; restart Talon to recover.
